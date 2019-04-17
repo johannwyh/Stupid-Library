@@ -11,14 +11,14 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiFrame.pageCtrl.pageCtrl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiFrame.pageCtrl.userPage.userPage">
    <children>
       <Text fill="#00b2f8" layoutX="172.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stupid-Libary">
          <font>
             <Font size="96.0" />
          </font>
       </Text>
-      <Text fill="#da0000" layoutX="265.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+      <Text fill="#da0000" layoutX="171.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card Manage">
          <font>
             <Font size="96.0" />
          </font>
@@ -47,10 +47,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ImageView fitHeight="388.0" fitWidth="750.0" layoutX="135.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@cover.jpg" />
-         </image></ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="948.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@wyhnb.jpg" />
@@ -76,5 +72,26 @@
             <Image url="@icon.png" />
          </image>
       </ImageView>
+      <Text fill="WHITE" layoutX="181.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card ID">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="cardId" layoutX="309.0" layoutY="367.0" />
+      <Button layoutX="648.0" layoutY="365.0" mnemonicParsing="false" onAction="#showCardInfo" prefHeight="43.0" prefWidth="150.0" text="Card Info">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Button>
+      <Button layoutX="223.0" layoutY="454.0" mnemonicParsing="false" onAction="#insertUser" prefHeight="43.0" prefWidth="173.0" text="Insert User">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Button>
+      <Button layoutX="480.0" layoutY="454.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="43.0" prefWidth="173.0" text="Delete User">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

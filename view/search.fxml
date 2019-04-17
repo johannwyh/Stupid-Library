@@ -11,14 +11,14 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiFrame.pageCtrl.pageCtrl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiFrame.pageCtrl.searchPage.searchPage">
    <children>
       <Text fill="#00b2f8" layoutX="172.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stupid-Libary">
          <font>
             <Font size="96.0" />
          </font>
       </Text>
-      <Text fill="#da0000" layoutX="265.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+      <Text fill="#da0000" layoutX="324.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search">
          <font>
             <Font size="96.0" />
          </font>
@@ -47,10 +47,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ImageView fitHeight="388.0" fitWidth="750.0" layoutX="135.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@cover.jpg" />
-         </image></ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="948.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@wyhnb.jpg" />
@@ -76,5 +72,56 @@
             <Image url="@icon.png" />
          </image>
       </ImageView>
+      <Text fill="WHITE" layoutX="85.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ID">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="78.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="96.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="105.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="109.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="90.0" layoutY="630.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="107.0" layoutY="677.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="bookId" layoutX="192.0" layoutY="368.0" />
+      <TextField fx:id="bookCategory" layoutX="192.0" layoutY="415.0" />
+      <TextField fx:id="bookName" layoutX="192.0" layoutY="462.0" />
+      <TextField fx:id="bookPress" layoutX="192.0" layoutY="509.0" />
+      <TextField fx:id="bookYearLB" layoutX="192.0" layoutY="556.0" prefHeight="37.0" prefWidth="69.0" />
+      <TextField fx:id="bookAuthor" layoutX="192.0" layoutY="603.0" />
+      <TextField fx:id="bookPriceLB" layoutX="192.0" layoutY="650.0" prefHeight="37.0" prefWidth="67.0" />
+      <Button layoutX="165.0" layoutY="713.0" mnemonicParsing="false" onAction="#getSearchResult" prefHeight="33.0" prefWidth="260.0" text="Search">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="283.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="——" />
+      <Text fill="WHITE" layoutX="283.0" layoutY="673.0" strokeType="OUTSIDE" strokeWidth="0.0" text="——" />
+      <TextField fx:id="bookYearUB" layoutX="329.0" layoutY="556.0" prefHeight="37.0" prefWidth="69.0" />
+      <TextField fx:id="bookPriceUB" layoutX="329.0" layoutY="650.0" prefHeight="37.0" prefWidth="69.0" />
    </children>
 </AnchorPane>

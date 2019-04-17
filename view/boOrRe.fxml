@@ -11,14 +11,14 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiFrame.pageCtrl.pageCtrl">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiFrame.pageCtrl.boOrRePage.boOrRePage">
    <children>
       <Text fill="#00b2f8" layoutX="172.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stupid-Libary">
          <font>
             <Font size="96.0" />
          </font>
       </Text>
-      <Text fill="#da0000" layoutX="265.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+      <Text fill="#da0000" layoutX="148.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrow/Return">
          <font>
             <Font size="96.0" />
          </font>
@@ -30,7 +30,7 @@
                   <MenuItem fx:id="toMainPage" mnemonicParsing="false" onAction="#toMainPage" text="Main Page" />
                   <MenuItem fx:id="toImport" mnemonicParsing="false" onAction="#toImport" text="Import Book(s)" />
                   <MenuItem fx:id="toSearch" mnemonicParsing="false" onAction="#toSearch" text="Search Book(s)" />
-                  <MenuItem fx:id="toBoOrRe" mnemonicParsing="false" onAction="#toBoOrRe" text="Borrow/Return" />
+                  <MenuItem fx:id="toBoOrRe" mnemonicParsing="false" onAction="#toBorrow" text="Borrow/Return" />
                   <MenuItem fx:id="toUserManagement" mnemonicParsing="false" onAction="#toUserManagement" text="Users Management" />
                </items>
           </Menu>
@@ -47,10 +47,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ImageView fitHeight="388.0" fitWidth="750.0" layoutX="135.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@cover.jpg" />
-         </image></ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="948.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@wyhnb.jpg" />
@@ -76,5 +72,37 @@
             <Image url="@icon.png" />
          </image>
       </ImageView>
+      <Text fill="WHITE" layoutX="85.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card ID">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="cardId" layoutX="192.0" layoutY="368.0" />
+      <Button layoutX="304.0" layoutY="414.0" mnemonicParsing="false" onAction="#showCardInfo" prefHeight="43.0" prefWidth="150.0" text="Card Info">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="82.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ID">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="bookId" layoutX="192.0" layoutY="481.0" />
+      <Button layoutX="304.0" layoutY="529.0" mnemonicParsing="false" onAction="#showBookInfo" prefHeight="43.0" prefWidth="150.0" text="Book Info">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Button>
+      <Button layoutX="82.0" layoutY="602.0" mnemonicParsing="false" onAction="#toBorrow" prefHeight="24.0" prefWidth="167.0" text="Borrow">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Button>
+      <Button layoutX="281.0" layoutY="602.0" mnemonicParsing="false" onAction="#toReturn" prefHeight="24.0" prefWidth="167.0" text="Return">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

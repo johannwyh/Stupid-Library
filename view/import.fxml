@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiFrame.pageCtrl.importPage.importPage">
+   <children>
+      <Text fill="#00b2f8" layoutX="172.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stupid-Libary">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Text>
+      <Text fill="#da0000" layoutX="324.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Import">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Text>
+      <MenuBar prefHeight="40.0" prefWidth="1200.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Functions">
+               <items>
+                  <MenuItem fx:id="toMainPage" mnemonicParsing="false" onAction="#toMainPage" text="Main Page" />
+                  <MenuItem fx:id="toImport" mnemonicParsing="false" onAction="#toImport" text="Import Book(s)" />
+                  <MenuItem fx:id="toSearch" mnemonicParsing="false" onAction="#toSearch" text="Search Book(s)" />
+                  <MenuItem fx:id="toBorrow" mnemonicParsing="false" onAction="#toBoOrRe" text="Borrow/Return" />
+                  <MenuItem fx:id="toUserManagement" mnemonicParsing="false" onAction="#toUserManagement" text="Users Management" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Options">
+            <items>
+              <MenuItem fx:id="toLogOut" mnemonicParsing="false" onAction="#toLogOut" text="Log Out" />
+                  <MenuItem fx:id="toExit" mnemonicParsing="false" onAction="#toExit" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="toHelp" mnemonicParsing="false" onAction="#toHelp" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="948.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@wyhnb.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="933.0" layoutY="570.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@qxysb.png" />
+         </image>
+      </ImageView>
+      <Text fill="#c6b714" layoutX="923.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Developed By">
+         <font>
+            <Font name="Ink Free" size="36.0" />
+         </font>
+      </Text>
+      <Text fill="#00ff33" layoutX="990.0" layoutY="765.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@ZJU">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="183.0" fitWidth="181.0" layoutX="933.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icon.png" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="85.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ID">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="78.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="96.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="105.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="479.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="454.0" layoutY="443.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="477.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="476.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Num">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="bookId" layoutX="192.0" layoutY="368.0" />
+      <TextField fx:id="bookCategory" layoutX="192.0" layoutY="416.0" />
+      <TextField fx:id="bookName" layoutX="192.0" layoutY="465.0" />
+      <TextField fx:id="bookPress" layoutX="192.0" layoutY="513.0" />
+      <TextField fx:id="bookYear" layoutX="551.0" layoutY="368.0" />
+      <TextField fx:id="bookAuthor" layoutX="551.0" layoutY="417.0" />
+      <TextField fx:id="bookPrice" layoutX="551.0" layoutY="465.0" />
+      <TextField fx:id="bookNum" layoutX="551.0" layoutY="512.0" />
+      <Button layoutX="324.0" layoutY="582.0" mnemonicParsing="false" onAction="#toSubmitImport" prefHeight="33.0" prefWidth="260.0" text="Submit">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Button>
+      <Text fill="#007cdb" layoutX="412.0" layoutY="686.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OR">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
+      <Button layoutX="342.0" layoutY="713.0" mnemonicParsing="false" onAction="#toImportFromCSV" text="Import From File" />
+   </children>
+</AnchorPane>
