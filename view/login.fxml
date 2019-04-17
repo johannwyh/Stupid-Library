@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiFrame.Controller.Controller">
+   <children>
+      <MenuBar layoutY="-3.0" prefHeight="35.0" prefWidth="800.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="Start">
+            <items>
+                  <MenuItem fx:id="Exit" mnemonicParsing="false" onAction="#toExit" text="Exit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#showHelpInfo" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fitHeight="99.0" fitWidth="114.0" layoutX="541.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@./qxysb.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="94.0" fitWidth="120.0" layoutX="669.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@./wyhnb.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="#d0c120" layoutX="557.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Developed by">
+         <font>
+            <Font name="Ink Free" size="36.0" />
+         </font>
+      </Text>
+      <Text fill="#2dcd40" layoutX="618.0" layoutY="536.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@ ZJU">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="username" layoutX="179.0" layoutY="258.0" />
+      <TextField fx:id="password" layoutX="179.0" layoutY="337.0" />
+      <Text fill="WHITE" layoutX="58.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username : ">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="61.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password : ">
+         <font>
+            <Font name="Ink Free" size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="577.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icon.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="login" layoutX="240.0" layoutY="407.0" mnemonicParsing="false" text="Login" />
+      <Text fill="#00b2f8" layoutX="246.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stupid-Libary">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#keyDown" onKeyReleased="#input" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Main.Controller.Controller">
+   <children>
+      <Text fill="#00b2f8" layoutX="246.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stupid-Libary">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
+      <Text fill="#da0000" layoutX="205.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+         <font>
+            <Font size="96.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
