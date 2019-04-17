@@ -29,7 +29,6 @@ public class controlManager //Manage the page switching.
         }
         else
         {
-            System.out.println("to show page~~~~~");
             myPage.get(pageName).show(currentStage);
         }
     }
@@ -58,15 +57,8 @@ class page          //page object.
             };
             System.out.println(resourcePath+" "+iconPath+" "+title);
             primaryStage.setOnCloseRequest(handler);
-
-            System.out.println("get icon");
             primaryStage.getIcons().add(new Image(iconPath));
-            System.out.println("gotten icon");
-
-            System.out.println("get resource");
             Parent root = FXMLLoader.load(getClass().getResource(resourcePath)); 
-            System.out.println("gotten resource");
-
             primaryStage.setTitle(title);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();              

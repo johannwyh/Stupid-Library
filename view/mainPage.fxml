@@ -13,34 +13,69 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="guiFrame.pageCtrl.pageCtrl">
    <children>
-      <Text fill="#00b2f8" layoutX="454.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stupid-Libary">
+      <Text fill="#00b2f8" layoutX="172.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stupid-Libary">
          <font>
-            <Font size="48.0" />
+            <Font size="96.0" />
          </font>
       </Text>
-      <Text fill="#da0000" layoutX="392.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
+      <Text fill="#da0000" layoutX="265.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
          <font>
             <Font size="96.0" />
          </font>
       </Text>
       <MenuBar prefHeight="40.0" prefWidth="1200.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="import " />
-            </items>
+          <Menu mnemonicParsing="false" text="Functions">
+               <items>
+                  <MenuItem fx:id="toMainPage" mnemonicParsing="false" onAction="#toMainPage" text="Main Page" />
+                  <MenuItem fx:id="toImport" mnemonicParsing="false" onAction="#toImport" text="Import Book(s)" />
+                  <MenuItem fx:id="toSearch" mnemonicParsing="false" onAction="#toSearch" text="Search Book(s)" />
+                  <MenuItem fx:id="toBorrow" mnemonicParsing="false" onAction="#toBorrow" text="Borrow" />
+                  <MenuItem fx:id="toReturn" mnemonicParsing="false" onAction="#toReturn" text="Return" />
+                  <MenuItem fx:id="toUserManagement" mnemonicParsing="false" onAction="#toUserManagement" text="Users Management" />
+               </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="Options">
             <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem fx:id="toLogOut" mnemonicParsing="false" onAction="#toLogOut" text="Log Out" />
+                  <MenuItem fx:id="toExit" mnemonicParsing="false" onAction="#toExit" text="Exit" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="toHelp" mnemonicParsing="false" onAction="#toHelp" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
+      <ImageView fitHeight="388.0" fitWidth="750.0" layoutX="135.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@cover.jpg" />
+         </image></ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="948.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@wyhnb.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="933.0" layoutY="570.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@qxysb.png" />
+         </image>
+      </ImageView>
+      <Text fill="#c6b714" layoutX="923.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Developed By">
+         <font>
+            <Font name="Ink Free" size="36.0" />
+         </font>
+      </Text>
+      <Text fill="#00ff33" layoutX="990.0" layoutY="765.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\@ZJU">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="183.0" fitWidth="181.0" layoutX="933.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icon.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import guiFrame.controlManager.controlManager;
 
 public class pageCtrl implements Initializable
 {
@@ -28,12 +29,41 @@ public class pageCtrl implements Initializable
     }
     public void toExit()
     {
+        System.out.println("exit!!");
         System.exit(0);
         return;
     }
-    public void showHelpInfo()
+    public void toHelp()
     {
-        //System.exit(0);
         return;
+    }
+    public void toMainPage()
+    {
+        controlManager.showPage("mainPage");
+    }
+    public void toImport()
+    {
+        //controlManager.showPage("importPage");
+    }
+    public void toSearch()
+    {
+
+    }
+    public void toBorrow()
+    {
+
+    }
+    public void toReturn()
+    {
+
+    }
+    public void toUserManagement()
+    {
+
+    }
+    public void toLogOut()
+    {
+        System.out.println("logOut!!");
+        controlManager.showPage("logIn");
     }
 }
