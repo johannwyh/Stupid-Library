@@ -16,6 +16,10 @@ public class controlManager //Manage the page switching.
     {
         currentStage=myStage;
     }
+    static public Stage getStage()
+    {
+        return currentStage;
+    }
     static public void pushPage(String pageName,String iconPath,String resourcePath,String title)  //insert page
     {
         myPage.put(pageName, new page(iconPath,resourcePath,title));

@@ -43,23 +43,19 @@ public class pageCtrl implements Initializable
     }
     public void toImport()
     {
-        //controlManager.showPage("importPage");
+        controlManager.showPage("importPage");
     }
     public void toSearch()
     {
-
+        controlManager.showPage("searchPage");
     }
-    public void toBorrow()
+    public void toBoOrRe()
     {
-
-    }
-    public void toReturn()
-    {
-
+        controlManager.showPage("boOrRePage");
     }
     public void toUserManagement()
     {
-
+        controlManager.showPage("cardManagementPage");
     }
     public void toLogOut()
     {

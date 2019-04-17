@@ -12,6 +12,10 @@ import guiFrame.loginCtrl.loginCtrl;
 import guiFrame.controlManager.controlManager;
 import guiFrame.pageCtrl.pageCtrl;
 import guiFrame.loginCtrl.loginCtrl;
+import guiFrame.pageCtrl.importPage.importPage;
+import guiFrame.pageCtrl.searchPage.searchPage;
+import guiFrame.pageCtrl.boOrRePage.boOrRePage;
+import guiFrame.pageCtrl.userPage.userPage;
 
 public class guiFrame extends Application
 {
@@ -25,6 +29,10 @@ public class guiFrame extends Application
         controlManager.setStage(primaryStage);  //set the handle of our window..
         controlManager.pushPage("logIn", "/view/icon.png", "/view/login.fxml", "SPLibrary-logIn");
         controlManager.pushPage("mainPage", "/view/icon.png", "/view/mainPage.fxml", "SPLibrary-mainPage");
+        controlManager.pushPage("importPage","/view/icon.png","/view/import.fxml","SPLibrary-import");
+        controlManager.pushPage("searchPage","/view/icon.png","/view/search.fxml","SPLibrary-search");
+        controlManager.pushPage("cardManagementPage","/view/icon.png","/view/cardManagement.fxml","SPLibrary-UsrManagement");
+        controlManager.pushPage("boOrRePage","/view/icon.png","/view/boOrRe.fxml","SPLibrary-bookIO");
         //push all the pages we design into the controlManager.
         controlManager.showPage("logIn"); //initially, we render the login page.
     }
@@ -36,6 +44,10 @@ public class guiFrame extends Application
         {
             pageCtrl.touch();
             loginCtrl.touch();
+            importPage.touch();
+            searchPage.touch();
+            boOrRePage.touch();
+            userPage.touch();
         }
         catch(Exception e)
         {
