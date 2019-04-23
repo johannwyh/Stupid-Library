@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import guiFrame.controlManager.controlManager;
+import Engine.Authorization.Authorization;
 public class loginCtrl implements Initializable
 {
     @FXML
@@ -51,8 +52,9 @@ public class loginCtrl implements Initializable
     {
         String inUser = username.getText();
         String inPwd = password.getText();
-        if(inUser.equals(stdUsername)&&inPwd.equals(stdPassword))
+        if(Authorization.checkAuthorization(inUser, inPwd))
         {
+            Authorization.logIn(inUser);
             loginSuccessfully();
         }
         else

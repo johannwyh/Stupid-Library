@@ -16,6 +16,7 @@ import guiFrame.pageCtrl.importPage.importPage;
 import guiFrame.pageCtrl.searchPage.searchPage;
 import guiFrame.pageCtrl.boOrRePage.boOrRePage;
 import guiFrame.pageCtrl.userPage.userPage;
+import Engine.Authorization.Authorization;
 
 public class guiFrame extends Application
 {
@@ -52,6 +53,16 @@ public class guiFrame extends Application
         catch(Exception e)
         {
             System.out.println("the controller system is broken.");
+            System.exit(0);
+        }
+
+        try
+        {
+            Authorization.init();
+        }
+        catch(Exception e)
+        {
+            System.out.println("the authorization system is broken.");
             System.exit(0);
         }
     }

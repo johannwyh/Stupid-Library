@@ -4,9 +4,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import Engine.Authorization.Authorization;
 
 public class controlManager //Manage the page switching.
 {
@@ -33,7 +35,18 @@ public class controlManager //Manage the page switching.
         }
         else
         {
-            myPage.get(pageName).show(currentStage);
+            if(pageName.equals("searchPage")==false&&
+            pageName.equals("mainPage")==false&&
+            pageName.equals("logIn")==false&&
+            Authorization.currentAccount.isAdmin()==false)
+            {
+                Alert message = new Alert(Alert.AlertType.INFORMATION);
+                message.setTitle("No Authorization");
+                message.setHeaderText("SPLibrary");
+                message.setContentText("Insure that you have the acess right.");
+                message.show();
+            }
+            else myPage.get(pageName).show(currentStage);
         }
     }
 }
