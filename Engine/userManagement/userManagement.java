@@ -7,10 +7,7 @@ import Engine.Authorization.Authorization;
 public class userManagement {
     public static boolean insertUser(String id,String pwd,String name,String tel,String depart,String type) {
         User tmp;
-        if (pwd.equals(""))
-            tmp = new User(id, name, tel, depart, type);
-        else
-            tmp = new User(id, pwd, name, tel, depart, type);
+        tmp = new User(id, pwd, name, tel, depart, type);
         return Authorization.insertAccount(Authorization.currentAccount, tmp);
     }
     public static boolean deleteUser(String id) {

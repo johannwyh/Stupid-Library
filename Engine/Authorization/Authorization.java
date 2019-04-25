@@ -14,9 +14,11 @@ public class Authorization
     private static ArrayList<Account> account=new ArrayList<Account>();
     public static Account currentAccount;
 
-    private static void printAccount() {
+    public static void printAccount() {
+        System.out.println("========= Start of Account =========");
         for (Account t:account)
             System.out.println(t.getId());
+        System.out.println("========= End   of Account =========");
     }
     
     public static void init()
@@ -31,7 +33,7 @@ public class Authorization
         if (existID(t.getId()))
             return false;
         else {
-            account.add(t);
+            account.add((Account)t);
             try {
                 Connection conn = null;
                 Class.forName("com.mysql.jdbc.Driver");
@@ -85,7 +87,7 @@ public class Authorization
         if (existID(t.getId()))
             return false;
         else {
-            account.add(t);
+            account.add((Account)t);
             try {
                 Connection conn = null;
                 Class.forName("com.mysql.jdbc.Driver");
