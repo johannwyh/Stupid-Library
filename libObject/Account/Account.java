@@ -23,6 +23,10 @@ public class Account         //root class of account. Containing basic info of a
     {
         return isAdmin;
     }
+    public String getPass()
+    {
+        return accountPassword;
+    }
     public void setId(String x)
     {
         accountId=x;
@@ -50,5 +54,12 @@ public class Account         //root class of account. Containing basic info of a
         accountPassword=pwd;
         accountName=name;
         accountTel=tel;
+    }
+    public Account(String id, String pwd) {
+        accountId = id;
+        accountPassword = pwd;
+    }
+    public Account(String id) {
+        accountId = id;
     }
 }

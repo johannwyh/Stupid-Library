@@ -6,15 +6,212 @@ import java.util.ArrayList;
 import libObject.Account.Account;
 import libObject.Account.User.User;
 import libObject.Account.Administer.Administer;
+import Engine.serverInfo.*;
+import java.sql.*;
+
 public class Authorization
 {
     private static ArrayList<Account> account=new ArrayList<Account>();
     public static Account currentAccount;
+
+    private static void printAccount() {
+        for (Account t:account)
+            System.out.println(t.getId());
+    }
+    
     public static void init()
     {
-       getList();
+        dragFromBackend();
+        printAccount();
+        importFromList("./data/userList.txt");
+        printAccount();
     }
-    public static boolean  checkAuthorization(String id,String pwd)
+
+    private static boolean insertUser(User t) {
+        if (existID(t.getId()))
+            return false;
+        else {
+            account.add(t);
+            try {
+                Connection conn = null;
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection(serverInfo.DB_URL,serverInfo.USER,serverInfo.PASS);
+                String sql = "insert into user (cardID, name, dept, type) values(?, ?, ?, ?)";
+                PreparedStatement pstmt;
+                System.out.println("##### Inserting User " + t.getId());
+                pstmt = (PreparedStatement)conn.prepareStatement(sql);
+                pstmt.setString(1, t.getId());
+                pstmt.setString(2, t.getName());
+                pstmt.setString(3, t.getDepartment());
+                pstmt.setString(4, t.getType());
+                pstmt.executeUpdate();
+                pstmt.close();
+                conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return true;
+        }
+    }
+
+    private static boolean deleteUser(User t) {
+        if (existID(t.getId()) == false)
+            return false;
+        else {
+            account.remove((Account)t);
+            try {
+                Connection conn = null;
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection(serverInfo.DB_URL, serverInfo.USER, serverInfo.PASS);
+                String sql = "delete from user where cardID = ?";
+                PreparedStatement pstmt;
+                pstmt = (PreparedStatement)conn.prepareStatement(sql);
+                pstmt.setString(1, t.getId());
+                pstmt.executeUpdate();
+                pstmt.close();
+                conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return true;
+    }
+
+    private static boolean insertAdmin(Administer t) {
+        if (existID(t.getId()))
+            return false;
+        else {
+            account.add(t);
+            try {
+                Connection conn = null;
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection(serverInfo.DB_URL,serverInfo.USER,serverInfo.PASS);
+                String sql = "insert into admin (id, passwd, name, tel) values(?, ?, ?, ?)";
+                PreparedStatement pstmt;
+                pstmt = (PreparedStatement)conn.prepareStatement(sql);
+                pstmt.setString(1, t.getId());
+                pstmt.setString(2, t.getPass());
+                pstmt.setString(3, t.getName());
+                pstmt.setString(4, t.getTel());
+                pstmt.executeUpdate();
+                pstmt.close();
+                conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return true;
+    }
+
+    private static boolean deleteAdmin(Administer t) {
+        if (existID(t.getId()) == false)
+            return false;
+        else {
+            account.remove((Account)t);
+            try {
+                Connection conn = null;
+                Class.forName("com.mysql.jdbc.Driver");
+                conn = DriverManager.getConnection(serverInfo.DB_URL,serverInfo.USER,serverInfo.PASS);
+                String sql = "delete from admin where id = ?";
+                PreparedStatement pstmt;
+                pstmt = (PreparedStatement)conn.prepareStatement(sql);
+                pstmt.setString(1, t.getId());
+                pstmt.executeUpdate();
+                pstmt.close();
+                conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return true;
+        }
+    }
+
+    public static boolean insertAccount(Account worker, Account acct) {
+        if (acct.isAdmin() == true || worker.isAdmin() == false) return false;
+        return insertUser((User)acct);
+    }
+
+    public static boolean deleteAccount(Account worker, String id) {
+        if (worker.isAdmin() == false) return false;
+        for(Account t:account) {
+            if (t.isAdmin()) continue;
+            if (t.getId().equals(id))
+                return deleteUser((User)t);
+        }
+        return false;
+    }
+
+    public static boolean existID(String ID) {
+        for(Account t:account) {
+            if (t.getId().equals(ID)) return true;
+        }
+        return false;
+    }
+
+    private static void dragFromBackend() {
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            conn = DriverManager.getConnection(serverInfo.DB_URL, serverInfo.USER, serverInfo.PASS);
+        } catch(SQLException se) {
+            se.printStackTrace();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            stmt = conn.createStatement();
+            String sql;
+            sql = "select * from user";
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                String cardID = rs.getString("cardID");
+                String name = rs.getString("name");
+                String dept = rs.getString("dept");
+                String type = rs.getString("type");
+                if (existID(cardID) == true) continue;
+                User tmp = new User(cardID, name, dept, type);
+                account.add(tmp);
+            }
+            stmt.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            stmt = conn.createStatement();
+            String sql;
+            sql = "select * from admin";
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                String id = rs.getString("id");
+                String passwd = rs.getString("passwd");
+                String name = rs.getString("name");
+                String tel = rs.getString("tel");
+                if (existID(id) == true) continue;
+                Administer tmp = new Administer(id, passwd, name, tel);
+                account.add(tmp);
+            }
+            stmt.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean checkAuthorization(String id,String pwd)
     {
         for(Account t:account)
         {
@@ -22,22 +219,26 @@ public class Authorization
         }
         return false;
     }
+    
     public static void logIn(String id)
     {
         for(Account t:account)
         {
             if(t.getId().equals(id))currentAccount=t;
         }
+
     }
+    
     public static void logOut()
     {
         currentAccount=null;
     }
-    private static void getList()
+    
+    public static void importFromList(String filePath)
     {
         try
         {
-            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream("./data/userList.txt"),"UTF-8"));
+            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(filePath),"UTF-8"));
             String temp=in.readLine();
             String buf[];
             Account tempAccount;
@@ -55,7 +256,12 @@ public class Authorization
                     tempAccount=new User(buf[1], buf[2], buf[3], buf[4],buf[5],buf[6]);
                     //public User(String id,String pwd,String name,String tel,String depart,String type)
                 }
-                account.add(tempAccount);
+                if (existID(tempAccount.getId()) == false) {
+                    if (tempAccount.isAdmin())
+                        insertAdmin((Administer)tempAccount);
+                    else
+                        insertUser((User)tempAccount);
+                }
                 temp=in.readLine();
             }
             in.close();

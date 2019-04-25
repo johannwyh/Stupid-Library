@@ -2,9 +2,9 @@ package libObject.Book;
 public class Book
 {
     private String bookId,bookType,bookTitle,bookPress,bookAuthor;
-    private int bookYear,bookNum;
+    private int bookYear,bookNum,bookStock;
     private float bookPrice;
-    public Book(String id,String type,String title,String press,int year,String author,float price,int num)
+    public Book(String id,String type,String title,String press,int year,String author,float price,int num,int stock)
     {
         bookId=id;
         bookType=type;
@@ -14,6 +14,7 @@ public class Book
         bookYear=year;
         bookPrice=price;
         bookNum=num;
+        bookStock=stock;
     }
     public String getId()
     {
@@ -42,6 +43,10 @@ public class Book
     public int getNum()
     {
         return bookNum;
+    }
+    public int getStock()
+    {
+        return bookStock;
     }
     public float getPrice()
     {

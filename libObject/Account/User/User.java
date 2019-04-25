@@ -14,6 +14,13 @@ public class User extends Account       //user object
         this.department=depart;
         this.userType=type;
     }
+    public User(String id, String name, String depart, String type) {
+        super(id);
+        this.setPassword("");
+        this.setName(name);
+        this.department = depart;
+        this.userType = type;
+    }
     private String department;
     private String userType;
     public String getDepartment()
