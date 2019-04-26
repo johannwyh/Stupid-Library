@@ -18,6 +18,7 @@ public class basicOperation {
         }
         return conn;
     }
+
     public static ResultSet select(String sql) {
         Connection conn = getConnection();
         Statement stmt = null;
@@ -32,6 +33,7 @@ public class basicOperation {
         }
         return rs;
     }
+
     public static ResultSet selectWithArgs(String sql, ArrayList<String> args) {
         Connection conn = getConnection();
         PreparedStatement pstmt;
@@ -50,5 +52,37 @@ public class basicOperation {
             e.printStackTrace();
         }
         return rs;
+    }
+    
+    public static void update(String sql) {
+        Connection conn = getConnection();
+        Statement stmt = null;
+        ResultSet rs = null;
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateWithArgs(String sql, ArrayList<String> args) {
+        Connection conn = getConnection();
+        PreparedStatement pstmt;
+        try {
+            pstmt = (PreparedStatement)conn.prepareStatement(sql);
+            for(int i = 0; i < args.size(); i++) {
+                pstmt.setString(i + 1, args.get(i));
+            }
+            pstmt.executeUpdate();
+            pstmt.close();
+            conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
