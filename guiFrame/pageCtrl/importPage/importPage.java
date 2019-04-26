@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import guiFrame.controlManager.controlManager;
+import libObject.Book.Book;
+import Engine.bookManagement.bookManagement;
 
 public class importPage extends pageCtrl
 {
@@ -41,6 +43,8 @@ public class importPage extends pageCtrl
             name=bookName.getText();
             press=bookPress.getText();
             author=bookAuthor.getText();
+            Book tmp = new Book(id, category, name, press, year, author, price, num, num);
+            bookManagement.importBook(tmp);
             System.out.println("Info : "+getStringInfo());
         }catch(Exception e)
         {

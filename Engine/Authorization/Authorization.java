@@ -2,6 +2,7 @@ package Engine.Authorization;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import Engine.basicOperation.basicOperation;
 import java.util.ArrayList;
 import libObject.Account.Account;
 import libObject.Account.User.User;
@@ -13,6 +14,7 @@ public class Authorization
 {
     private static ArrayList<Account> account=new ArrayList<Account>();
     public static Account currentAccount;
+    public static Connection currentConnection;
 
     public static void printAccount() {
         System.out.println("========= Start of Account =========");
@@ -226,7 +228,10 @@ public class Authorization
     {
         for(Account t:account)
         {
-            if(t.getId().equals(id))currentAccount=t;
+            if(t.getId().equals(id)) {
+                currentAccount=t;
+                currentConnection = basicOperation.getConnection();
+            }
         }
 
     }
@@ -234,6 +239,11 @@ public class Authorization
     public static void logOut()
     {
         currentAccount=null;
+        try {
+            currentConnection.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
     }
     
     public static void importFromList(String filePath)
