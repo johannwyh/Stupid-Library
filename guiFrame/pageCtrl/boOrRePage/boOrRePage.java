@@ -4,6 +4,7 @@ import guiFrame.controlManager.controlManager;
 import guiFrame.pageCtrl.pageCtrl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import Engine.bookManagement.bookManagement;
 
 public class boOrRePage extends pageCtrl
 {
@@ -23,10 +24,12 @@ public class boOrRePage extends pageCtrl
     {
         System.out.println("User with ID "+cardId.getText()+" want to borrow book with ID "+
         bookId.getText());
+        bookManagement.borrowBook(bookId.getText(), cardId.getText(), "xxx", "xxx");
     }
     public void toReturn()
     {
         System.out.println("User with ID "+cardId.getText()+" want to return book with ID "+
         bookId.getText());
+        bookManagement.returnBook(bookId.getText(), cardId.getText(), "xxx");
     }
 }
