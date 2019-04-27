@@ -82,7 +82,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="96.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+      <Text fill="WHITE" layoutX="110.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title">
          <font>
             <Font size="24.0" />
          </font>

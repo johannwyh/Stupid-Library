@@ -1,0 +1,4 @@
+    1998,   15,  58.6,1008,art,wyhnb,wyhpress,wyh
+   5058,   28,188.0,1009,cs,qxysb,qxypress,qxy
+  2019,50,  18.8,1010,math,laowang,mathpress,laowang
+  2018,  48,  48.3,1011,csapp,nb,nbpress,nb

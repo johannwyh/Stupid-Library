@@ -52,4 +52,23 @@ public class Book
     {
         return bookPrice;
     }
+    public String toString()
+    {
+        /*
+            private String bookId,bookType,bookTitle,bookPress,bookAuthor;
+            private int bookYear,bookNum,bookStock;
+            private float bookPrice;
+        */
+        StringBuffer x=new StringBuffer();
+        x.append("bookId : "+bookId+"\n");
+        x.append("bookType : "+bookType+"\n");
+        x.append("bookTitle : "+bookTitle+"\n");
+        x.append("bookPress : "+bookPress+"\n");
+        x.append("bookAuthor : "+bookAuthor+"\n");
+        x.append("bookYear : "+bookYear+"\n");
+        x.append("bookNum : "+bookNum+"\n");
+        x.append("bookStock : "+bookStock+"\n");
+        x.append("bookPrice : "+bookPrice+"\n");
+        return x.toString();
+    }
 }

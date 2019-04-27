@@ -94,21 +94,33 @@
             <Font size="55.0" />
          </font>
       </Button>
-      <Button layoutX="275.0" layoutY="559.0" mnemonicParsing="false" onAction="#toBorrow" prefHeight="24.0" prefWidth="167.0" text="Borrow">
+      <Button layoutX="209.0" layoutY="645.0" mnemonicParsing="false" onAction="#toBorrow" prefHeight="24.0" prefWidth="167.0" text="Borrow">
          <font>
             <Font size="55.0" />
          </font>
       </Button>
-      <Button layoutX="469.0" layoutY="559.0" mnemonicParsing="false" onAction="#toReturn" prefHeight="24.0" prefWidth="167.0" text="Return">
+      <Button layoutX="678.0" layoutY="645.0" mnemonicParsing="false" onAction="#toReturn" prefHeight="24.0" prefWidth="167.0" text="Return">
          <font>
             <Font size="55.0" />
          </font>
       </Button>
-      <Text fill="WHITE" layoutX="158.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Date">
+      <Text fill="WHITE" layoutX="165.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrow Date">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="currentDate" layoutX="330.0" layoutY="487.0" />
+      <TextField fx:id="borrowDate" layoutX="330.0" layoutY="482.0" />
+      <Text fill="WHITE" layoutX="57.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Due Date">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="dueDate" layoutX="189.0" layoutY="583.0" />
+      <Text fill="WHITE" layoutX="495.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return Date">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="returnDate" layoutX="658.0" layoutY="583.0" />
    </children>
 </AnchorPane>
