@@ -127,8 +127,16 @@ public class boOrRePage extends pageCtrl
     {
         String Bid=bookId.getText();
         String Cid=cardId.getText();
-        String bDate=borrowDateY.getText()+"/"+borrowDateM.getText()+"/"+borrowDateD.getText();
-        String dDate=dueDateY.getText()+"/"+dueDateM.getText()+"/"+dueDateD.getText();
+        String bdY=borrowDateY.getText(),bdM=borrowDateM.getText(),bdD=borrowDateD.getText();
+        while(bdY.length()<2)bdY="0"+bdY;
+        while(bdM.length()<2)bdM="0"+bdM;
+        while(bdD.length()<2)bdD="0"+bdD;
+        String ddY=dueDateY.getText(),ddM=dueDateM.getText(),ddD=dueDateD.getText();
+        while(ddY.length()<2)ddY="0"+bdY;
+        while(ddM.length()<2)ddM="0"+bdM;
+        while(ddD.length()<2)ddD="0"+bdD;
+        String bDate=bdY+"/"+bdM+"/"+bdD;
+        String dDate=ddY+"/"+ddM+"/"+ddD;
         String message="User with ID "+Cid+" want to borrow book with ID "+Bid+"\n"+
                     "borrowDate="+bDate+"\n"+"dueDate="+dDate;
         //System.out.println("User with ID "+Cid+" want to borrow book with ID "+Bid);
@@ -150,7 +158,11 @@ public class boOrRePage extends pageCtrl
     {
         String Bid=bookId.getText();
         String Cid=cardId.getText();
-        String rDate=returnDateY.getText()+"/"+returnDateM.getText()+"/"+returnDateD.getText();
+        String rdY=returnDateY.getText(),rdM=returnDateM.getText(),rdD=returnDateD.getText();
+        while(rdY.length()<2)rdY="0"+rdY;
+        while(rdM.length()<2)rdM="0"+rdM;
+        while(rdD.length()<2)rdD="0"+rdD;
+        String rDate=rdY+"/"+rdM+"/"+rdD;
 
         String message="User with ID "+Cid+" want to return book with ID "+Bid+"\n"+
                     "returnDate="+rDate;
