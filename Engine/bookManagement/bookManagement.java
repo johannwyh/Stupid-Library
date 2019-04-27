@@ -129,4 +129,30 @@ public class bookManagement {
         }
         return false;
     }
+
+    // for all String, if not required, use ""
+    // for all int and float, if not required, use MIN or MAX
+    public static ArrayList<Book> searchBook(String bookID, String type, String name,
+                                            String press, int minYear, int maxYear,
+                                            String author, float minPrice, float maxPrice) {
+        String sql = "select * from where";
+        sql += " year >= " + Integer.toString(minYear);
+        sql += " and year <= " + Integer.toString(maxYear);
+        sql += " and price >= " + Float.toString(minPrice);
+        sql += " and price <= " + Float.toString(maxPrice);
+        if (bookID.equals("") == false) {
+            sql += " bookID = " + bookID;
+        }
+        if (type.equals("") == false) {
+            sql += " type = " + type;
+        }
+        if (name.equals("") == false) {
+            sql += " title = " + name;
+        }
+        if (press.equals("") == false) {
+            sql += " press = " + press;
+        }
+        sql += "";
+        return null;
+    } 
 }
