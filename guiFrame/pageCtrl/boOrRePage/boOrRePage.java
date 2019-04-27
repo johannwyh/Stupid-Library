@@ -1,14 +1,32 @@
 package guiFrame.pageCtrl.boOrRePage;
+import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import Engine.basicOperation.basicOperation;
 import guiFrame.controlManager.controlManager;
 import guiFrame.pageCtrl.pageCtrl;
+import guiFrame.tableType.libRecord.libRecord;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+import libObject.Entry.Entry;
 import Engine.bookManagement.bookManagement;
+import Engine.userManagement.userManagement;
 
 public class boOrRePage extends pageCtrl
 {
@@ -22,10 +40,71 @@ public class boOrRePage extends pageCtrl
     private TextField dueDate;
     @FXML
     private TextField returnDate;
+
+    private TableColumn cidCol = new TableColumn("cardId");
+    private TableColumn bidCol = new TableColumn("bookId");
+    private TableColumn dbCol = new TableColumn("dateBorrow");
+    private TableColumn ddCol = new TableColumn("dateDue");
+    private TableColumn drCol = new TableColumn("dateReturn");
+    private TableColumn spCol = new TableColumn("supervisior");
+    private Stage pane = new Stage();
+    private Label label= new Label();
+    private TableView table = new TableView();
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources)
+    {
+       pane.setTitle("Record");
+       pane.setMinWidth(650);
+       pane.setMaxWidth(650);
+       pane.setMinHeight(650);
+       pane.setMaxHeight(650);
+
+       label.setFont(new Font("Arial",20));
+
+       table.setEditable(false);
+       table.getColumns().addAll(cidCol,bidCol,dbCol,ddCol,drCol,spCol);
+
+       cidCol.setMinWidth(100);
+       bidCol.setMinWidth(100);
+       dbCol.setMinWidth(100);
+       ddCol.setMinWidth(100);
+       drCol.setMinWidth(100);
+       spCol.setMinWidth(100);
+
+       cidCol.setCellValueFactory(new PropertyValueFactory<>("cardId"));
+       bidCol.setCellValueFactory(new PropertyValueFactory<>("bookId"));
+       dbCol.setCellValueFactory(new PropertyValueFactory<>("dateBorrow"));
+       ddCol.setCellValueFactory(new PropertyValueFactory<>("dateDue"));
+       drCol.setCellValueFactory(new PropertyValueFactory<>("dateReturn"));
+       spCol.setCellValueFactory(new PropertyValueFactory<>("supervisior"));
+
+       final VBox vbox = new VBox();
+       vbox.setSpacing(5);
+       vbox.setPadding(new Insets(10, 0, 0, 10));
+       vbox.getChildren().addAll(label, table);
+
+       Scene scene = new Scene(new Group());
+       ((Group) scene.getRoot()).getChildren().addAll(vbox);
+
+       pane.setScene(scene);
+    }
+
     
+
     public void showCardInfo()
     {
-        System.out.println("card ID : "+cardId.getText());
+        String id = cardId.getText();
+        ArrayList<Entry> result = userManagement.getUserRecord(id);
+        ArrayList<libRecord> temp = new ArrayList<libRecord>();
+        for(Entry k : result)
+        {
+            temp.add(new libRecord(k.getCardId(),k.getBookId(),k.getDateB(),k.getDateD(),k.getDateR(),k.getSupervisor()));
+        }
+        ObservableList<libRecord> data = FXCollections.observableArrayList(temp);
+        label.setText("Record Of Card : "+id);
+        table.setItems(data);
+        pane.show();
     }
     public void showBookInfo()
     {
@@ -78,4 +157,5 @@ public class boOrRePage extends pageCtrl
             info.show();
         }
     }
+
 }
