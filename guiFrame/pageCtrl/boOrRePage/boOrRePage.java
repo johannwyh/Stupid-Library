@@ -45,9 +45,8 @@ public class boOrRePage extends pageCtrl
         Optional<ButtonType> result = confirmation.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.OK)
         {
-            boolean state = bookManagement.borrowBook(Bid,Cid,bDate, dDate);
-            if(state)message="Done!";
-            else message="Failed! Please Check Again! ";
+            String state = bookManagement.borrowBook(Bid,Cid,bDate, dDate);
+            message = state;
             Alert info = new Alert(Alert.AlertType.INFORMATION);
             info.setTitle("Result");
             info.setHeaderText("SPLibrary");

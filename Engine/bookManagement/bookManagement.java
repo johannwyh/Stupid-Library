@@ -4,6 +4,7 @@ import Engine.Authorization.Authorization;
 import libObject.Book.Book;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class bookManagement {
     public static void importBook(Book b) {
@@ -45,7 +46,7 @@ public class bookManagement {
         }
     }
 
-    public static boolean borrowBook(String bookID, String cardID, String borrowDate, String dueDate) {
+    public static String borrowBook(String bookID, String cardID, String borrowDate, String dueDate) {
         PreparedStatement pstmt;
         String sql;
         ResultSet rs;
@@ -57,16 +58,26 @@ public class bookManagement {
             pstmt.setString(2, bookID);
             rs = pstmt.executeQuery();
             if (rs.next() != false) {
-                return false;
+                return "cannot borrow more than one certain book";
             } else {
                 sql = "select * from Book where bookID = ?";
                 pstmt = (PreparedStatement)Authorization.currentConnection.prepareStatement(sql);
                 pstmt.setString(1, bookID);
                 rs = pstmt.executeQuery();
                 if (rs.next() == false) {
-                    return false;
+                    return "no such book";
                 } else if (rs.getInt("stock") == 0) {
-                    return false;
+                    sql = "select dueDate from entry where bookID = ? and returnDate is null";
+                    pstmt = (PreparedStatement)Authorization.currentConnection.prepareStatement(sql);
+                    pstmt.setString(1, bookID);
+                    rs = pstmt.executeQuery();
+                    ArrayList<String> dueDates = new ArrayList<String>();
+                    while (rs.next()) {
+                        String date = rs.getString("dueDate");
+                        dueDates.add(date);
+                    }
+                    Collections.sort(dueDates);
+                    return "no book left, the earlist due date is " + dueDates.get(0);
                 } else {
                     sql = "insert into entry (cardID, bookID, borrowDate, dueDate, returnDate, adminID) values(?, ?, ?, ?, ?, ?)";
                     pstmt = (PreparedStatement)Authorization.currentConnection.prepareStatement(sql);
@@ -83,7 +94,7 @@ public class bookManagement {
                     pstmt.setString(1, bookID);
                     pstmt.executeUpdate();
 
-                    return true;
+                    return "succeed";
                 }
             }
         } catch (SQLException se) {
@@ -91,7 +102,7 @@ public class bookManagement {
         } catch (Exception e) {
             e.printStackTrace();
         } 
-        return false;
+        return "error";
     }
     
     public static boolean returnBook(String bookID, String cardID, String returnDate) {
