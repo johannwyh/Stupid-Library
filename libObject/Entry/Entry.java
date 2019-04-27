@@ -1,17 +1,23 @@
 package libObject.Entry;
 public class Entry
 {
-    private String cardId,dateBorrow,dateDue,supervisior;
-    public Entry(String id,String dateB,String dateD,String sup)
+    private String cardId,bookId,dateBorrow,dateDue,dateReturn,supervisior;
+    public Entry(String cid,String bid,String dateB,String dateD,String dateReturn,String sup)
     {
-        cardId=id;
+        cardId=cid;
+        bookId=bid;
         dateBorrow=dateB;
         dateDue=dateD;
         supervisior=sup;
+        this.dateReturn=dateReturn;
     }
-    public String getId()
+    public String getCardId()
     {
         return cardId;
+    }
+    public String getBookId()
+    {
+        return bookId;
     }
     public String getDateB()
     {
@@ -25,4 +31,8 @@ public class Entry
     {
         return supervisior;
     }   
+    public String getDateR()
+    {
+        return dateReturn;
+    }
 }

@@ -48,7 +48,6 @@
          </font>
       </Text>
       <TextField fx:id="username" layoutX="179.0" layoutY="258.0" />
-      <TextField fx:id="password" layoutX="179.0" layoutY="337.0" />
       <Text fill="WHITE" layoutX="58.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username : ">
          <font>
             <Font name="Ink Free" size="24.0" />
@@ -70,5 +69,6 @@
             <Font size="48.0" />
          </font>
       </Text>
+      <PasswordField fx:id="password" layoutX="179.0" layoutY="337.0" />
    </children>
 </AnchorPane>

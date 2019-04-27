@@ -7,7 +7,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import libObject.Account.User.User;
+import libObject.Entry.Entry;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 import Engine.Authorization.Authorization;
@@ -28,7 +31,27 @@ public class userPage extends pageCtrl
 
     public void showCardInfo()
     {
-        System.out.println("card ID : "+cardId.getText());
+        String id=cardId.getText();
+        //System.out.println("card ID : "+cardId.getText());
+        User result=userManagement.searchUser(id);
+        String message;
+        
+        ArrayList<Entry> recordList = userManagement.getUserRecord(id);
+        int tot=recordList.size();
+        int notReturn=0;
+        for(Entry k:recordList)
+        {
+            String temp=k.getDateR();
+            if(temp==null||temp.equals(""))notReturn++;
+        }
+        
+        if(result!=null)message=result.toString()+"\n"+"Have Borrowed : "+tot+"\nStill Not Return : "+notReturn;
+        else message="Card Doesn't exist!";
+        Alert info = new Alert(Alert.AlertType.INFORMATION);
+        info.setTitle("Result");
+        info.setHeaderText("SPLibrary");
+        info.setContentText(message);
+        info.show();
     }
     public void insertUser()
     {
@@ -52,6 +75,7 @@ public class userPage extends pageCtrl
             info.setContentText(message);
             info.show();
         }
+        
         //Authorization.printAccount();
     }
     public void deleteUser()
@@ -62,9 +86,24 @@ public class userPage extends pageCtrl
         Optional<ButtonType> result = confirmation.showAndWait();
         if(result.isPresent() && result.get() == ButtonType.OK)
         {
-            boolean state=userManagement.deleteUser(id);
-            if(state) message="Successfully delete the card";
-            else message="Failed. ID doesn't existe or Wrong Format.";
+            ArrayList<Entry> recordList = userManagement.getUserRecord(id);
+            int notReturn=0;
+            for(Entry k:recordList)
+            {
+                String temp=k.getDateR();
+                if(temp==null||temp.equals(""))notReturn++;
+            }
+
+            if(notReturn==0)
+            {
+                boolean state=userManagement.deleteUser(id);
+                if(state) message="Successfully delete the card";
+                else message="Failed. ID doesn't existe or Wrong Format.";
+            }
+            else
+            {
+                message="Failed. "+notReturn+" Books Borrowed By This Card Are Still Not Returned !";
+            }
             Alert info = new Alert(Alert.AlertType.INFORMATION);
             info.setTitle("Result");
             info.setHeaderText("SPLibrary");

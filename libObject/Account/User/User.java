@@ -35,4 +35,13 @@ public class User extends Account       //user object
     {
         return userType;
     }
+    public String toString()
+    {
+        StringBuffer x = new StringBuffer();
+        x.append("id : "+this.getId()+"\n");
+        x.append("name : "+this.getName()+"\n");
+        x.append("department : "+this.getDepartment()+"\n");
+        x.append("type : "+this.getType());
+        return x.toString();
+    }
 }

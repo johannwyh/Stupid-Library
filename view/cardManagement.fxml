@@ -98,7 +98,6 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="Passwd" layoutX="231.0" layoutY="443.0" />
       <TextField fx:id="Name" layoutX="567.0" layoutY="443.0" />
       <Text fill="WHITE" layoutX="482.0" layoutY="470.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
          <font>
@@ -117,5 +116,6 @@
          </font>
       </Text>
       <TextField fx:id="myType" layoutX="567.0" layoutY="507.0" />
+      <PasswordField fx:id="Passwd" layoutX="231.0" layoutY="443.0" />
    </children>
 </AnchorPane>

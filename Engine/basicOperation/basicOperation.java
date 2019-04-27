@@ -21,6 +21,9 @@ public class basicOperation {
     public static ResultSet select(Connection conn, String sql) {
         Statement stmt = null;
         ResultSet rs = null;
+        //System.out.println("=====================");
+        //System.out.println(sql);
+        //System.out.println("=====================");
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(sql);
@@ -35,8 +38,9 @@ public class basicOperation {
     public static ResultSet selectWithArgs(Connection conn, PreparedStatement pstmt, ArrayList<String> args) {
         ResultSet rs = null;
         try {
-            System.out.println(args);
-            for(int i = 0; i < args.size(); i++) {
+            //System.out.println(args);
+            for(int i = 0; i < args.size(); i++) 
+            {
                 pstmt.setString(i + 1, args.get(i));
             }
             rs = pstmt.executeQuery();
