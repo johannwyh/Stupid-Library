@@ -11,7 +11,7 @@ public class serverInfo
    // public static final String DB_URL = "jdbc:mysql://localhost:3306/StupidLibrary";
     public static  final String DB_URL="jdbc:mysql://localhost/StupidLibrary";///StupidLibrary";
     public static  String USER = "root";
-    public static  String PASS = "johann990409wang";
+    public static  String PASS = "123456";
     private static String dbUseUnicode = "TRUE";
     private static String dbEncoding = "UTF8";
     private static String dbUseSSL = "TRUE";
