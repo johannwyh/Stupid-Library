@@ -32,7 +32,7 @@ public class userPage extends pageCtrl
     public void showCardInfo()
     {
         String id=cardId.getText();
-        //System.out.println("card ID : "+cardId.getText());
+        System.out.println("card ID : "+cardId.getText());
         User result=userManagement.searchUser(id);
         String message;
         
