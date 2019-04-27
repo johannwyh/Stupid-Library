@@ -46,7 +46,7 @@ public class userManagement
             System.out.println("There is something wrong when searching the user...");
             e.printStackTrace();
         }
-        return null;
+        return result;
     }
     public static ArrayList<Entry> getUserRecord(String id)
     {
