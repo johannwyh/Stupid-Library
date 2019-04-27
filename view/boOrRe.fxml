@@ -72,37 +72,43 @@
             <Image url="@icon.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="85.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card ID">
+      <Text fill="WHITE" layoutX="189.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card ID">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="cardId" layoutX="192.0" layoutY="368.0" />
-      <Button layoutX="304.0" layoutY="414.0" mnemonicParsing="false" onAction="#showCardInfo" prefHeight="43.0" prefWidth="150.0" text="Card Info">
+      <TextField fx:id="cardId" layoutX="330.0" layoutY="367.0" />
+      <Button layoutX="600.0" layoutY="365.0" mnemonicParsing="false" onAction="#showCardInfo" prefHeight="24.0" prefWidth="150.0" text="Card Info">
          <font>
             <Font size="55.0" />
          </font>
       </Button>
-      <Text fill="WHITE" layoutX="82.0" layoutY="508.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ID">
+      <Text fill="WHITE" layoutX="186.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ID">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="bookId" layoutX="192.0" layoutY="481.0" />
-      <Button layoutX="304.0" layoutY="529.0" mnemonicParsing="false" onAction="#showBookInfo" prefHeight="43.0" prefWidth="150.0" text="Book Info">
+      <TextField fx:id="bookId" layoutX="330.0" layoutY="424.0" />
+      <Button layoutX="600.0" layoutY="421.0" mnemonicParsing="false" onAction="#showBookInfo" prefHeight="43.0" prefWidth="150.0" text="Book Info">
          <font>
             <Font size="55.0" />
          </font>
       </Button>
-      <Button layoutX="82.0" layoutY="602.0" mnemonicParsing="false" onAction="#toBorrow" prefHeight="24.0" prefWidth="167.0" text="Borrow">
+      <Button layoutX="275.0" layoutY="559.0" mnemonicParsing="false" onAction="#toBorrow" prefHeight="24.0" prefWidth="167.0" text="Borrow">
          <font>
             <Font size="55.0" />
          </font>
       </Button>
-      <Button layoutX="281.0" layoutY="602.0" mnemonicParsing="false" onAction="#toReturn" prefHeight="24.0" prefWidth="167.0" text="Return">
+      <Button layoutX="469.0" layoutY="559.0" mnemonicParsing="false" onAction="#toReturn" prefHeight="24.0" prefWidth="167.0" text="Return">
          <font>
             <Font size="55.0" />
          </font>
       </Button>
+      <Text fill="WHITE" layoutX="158.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Date">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="currentDate" layoutX="330.0" layoutY="487.0" />
    </children>
 </AnchorPane>

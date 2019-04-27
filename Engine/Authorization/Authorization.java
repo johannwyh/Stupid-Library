@@ -25,6 +25,7 @@ public class Authorization
     
     public static void init()
     {
+        serverInfo.init("./data/admin.txt");
         dragFromBackend();
         printAccount();
         importFromList("./data/userList.txt");
@@ -38,8 +39,8 @@ public class Authorization
             account.add((Account)t);
             try {
                 Connection conn = null;
-                Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection(serverInfo.DB_URL,serverInfo.USER,serverInfo.PASS);
+                Class.forName(serverInfo.JDBC_DRIVER);
+                conn = DriverManager.getConnection(serverInfo.getUrl());
                 String sql = "insert into user (cardID, name, dept, type) values(?, ?, ?, ?)";
                 PreparedStatement pstmt;
                 System.out.println("##### Inserting User " + t.getId());
@@ -67,8 +68,8 @@ public class Authorization
             account.remove((Account)t);
             try {
                 Connection conn = null;
-                Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection(serverInfo.DB_URL, serverInfo.USER, serverInfo.PASS);
+                Class.forName(serverInfo.JDBC_DRIVER);
+                conn = DriverManager.getConnection(serverInfo.getUrl());
                 String sql = "delete from user where cardID = ?";
                 PreparedStatement pstmt;
                 pstmt = (PreparedStatement)conn.prepareStatement(sql);
@@ -92,8 +93,8 @@ public class Authorization
             account.add((Account)t);
             try {
                 Connection conn = null;
-                Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection(serverInfo.DB_URL,serverInfo.USER,serverInfo.PASS);
+                Class.forName(serverInfo.JDBC_DRIVER);
+                conn = DriverManager.getConnection(serverInfo.getUrl());
                 String sql = "insert into admin (id, passwd, name, tel) values(?, ?, ?, ?)";
                 PreparedStatement pstmt;
                 pstmt = (PreparedStatement)conn.prepareStatement(sql);
@@ -120,8 +121,8 @@ public class Authorization
             account.remove((Account)t);
             try {
                 Connection conn = null;
-                Class.forName("com.mysql.jdbc.Driver");
-                conn = DriverManager.getConnection(serverInfo.DB_URL,serverInfo.USER,serverInfo.PASS);
+                Class.forName(serverInfo.JDBC_DRIVER);
+                conn = DriverManager.getConnection(serverInfo.getUrl());
                 String sql = "delete from admin where id = ?";
                 PreparedStatement pstmt;
                 pstmt = (PreparedStatement)conn.prepareStatement(sql);
@@ -164,14 +165,16 @@ public class Authorization
         Connection conn = null;
         Statement stmt = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = DriverManager.getConnection(serverInfo.DB_URL, serverInfo.USER, serverInfo.PASS);
+            Class.forName(serverInfo.JDBC_DRIVER);
+            //System.out.println("check connection 1");
+            conn = DriverManager.getConnection(serverInfo.getUrl());
+            //System.out.println("check connection 2");
         } catch(SQLException se) {
             se.printStackTrace();
         } catch(Exception e) {
             e.printStackTrace();
         }
-
+        //System.out.println("START DRUG");
         try {
             stmt = conn.createStatement();
             String sql;
@@ -192,7 +195,7 @@ public class Authorization
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        
         try {
             stmt = conn.createStatement();
             String sql;
@@ -213,6 +216,7 @@ public class Authorization
         } catch (Exception e) {
             e.printStackTrace();
         }
+       // System.out.println("END DRUG");
     }
 
     public static boolean checkAuthorization(String id,String pwd)
@@ -261,12 +265,10 @@ public class Authorization
                 if(buf[0].equals("A"))
                 {
                     tempAccount=new Administer(buf[1], buf[2], buf[3], buf[4]);
-                    //public Administer(String id,String pwd,String name,String tel)
                 }
                 else
                 {
                     tempAccount=new User(buf[1], buf[2], buf[3], buf[4],buf[5],buf[6]);
-                    //public User(String id,String pwd,String name,String tel,String depart,String type)
                 }
                 if (existID(tempAccount.getId()) == false) {
                     if (tempAccount.isAdmin())

@@ -8,8 +8,8 @@ public class basicOperation {
     public static Connection getConnection() {
         Connection conn = null;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            conn = (Connection)DriverManager.getConnection(serverInfo.DB_URL, serverInfo.USER, serverInfo.PASS);
+            Class.forName(serverInfo.JDBC_DRIVER);
+            conn = (Connection)DriverManager.getConnection(serverInfo.getUrl());
         } catch (SQLException se) {
             se.printStackTrace();
         } catch (Exception e) {
