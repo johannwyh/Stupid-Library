@@ -166,9 +166,9 @@ public class Authorization
         Statement stmt = null;
         try {
             Class.forName(serverInfo.JDBC_DRIVER);
-            //System.out.println("check connection 1");
+            System.out.println("check connection 1");
             conn = DriverManager.getConnection(serverInfo.getUrl());
-            //System.out.println("check connection 2");
+            System.out.println("check connection 2");
         } catch(SQLException se) {
             se.printStackTrace();
         } catch(Exception e) {

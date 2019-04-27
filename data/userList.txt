@@ -1,4 +1,4 @@
 A,unispac,996ICU,admin,10086
-A,johann,johann990409wang,wangyuhan,88888888
+A,johann,wangyuhan,wangyuhan,88888888
 U,zju1000,wyhnb,qxy,10000,CS,S
 U,zju1001,wyhsb,wyh,13588708851,CS,S
