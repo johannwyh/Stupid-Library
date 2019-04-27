@@ -1,11 +1,15 @@
 package guiFrame.pageCtrl.searchPage;
 import java.io.File;
+import java.util.ArrayList;
 
 import guiFrame.pageCtrl.pageCtrl;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import guiFrame.controlManager.controlManager;
+import Engine.basicOperation.basicOperation;
+import Engine.bookManagement.bookManagement;
+import libObject.Book.Book;
 
 public class searchPage extends pageCtrl
 {
@@ -73,6 +77,9 @@ public class searchPage extends pageCtrl
         press=bookPress.getText();
         author=bookAuthor.getText();
         System.out.println("Info : "+getStringInfo());
+        
+        ArrayList<Book> sR = new ArrayList<Book>();
+        sR = bookManagement.searchBook(id, category, name, press, yearLB, yearUB, author, priceLB, priceUB);
         return;
     }
 
