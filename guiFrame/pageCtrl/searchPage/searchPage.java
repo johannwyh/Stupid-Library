@@ -30,6 +30,8 @@ public class searchPage extends pageCtrl
     static private int yearLB,yearUB;
     static private float priceLB,priceUB;
     static private String id,category,name,press,author;
+    static private final int small=-99999999;
+    static private final int big=99999999;
     public void getSearchResult()
     {
         String temp;
@@ -39,7 +41,7 @@ public class searchPage extends pageCtrl
             yearLB=Integer.parseInt(temp);
         }catch(Exception e)
         {
-            yearLB=-1;
+            yearLB=small;
         }
         try
         {
@@ -47,7 +49,7 @@ public class searchPage extends pageCtrl
             yearUB=Integer.parseInt(temp);
         }catch(Exception e)
         {
-            yearUB=-1;
+            yearUB=big;
         }
         try
         {
@@ -55,7 +57,7 @@ public class searchPage extends pageCtrl
             priceLB=Float.parseFloat(temp);
         }catch(Exception e)
         {
-            priceLB=-1;
+            priceLB=small;
         }
         try
         {
@@ -63,7 +65,7 @@ public class searchPage extends pageCtrl
             priceUB=Float.parseFloat(temp);
         }catch(Exception e)
         {
-            priceUB=-1;
+            priceUB=big;
         }
         id=bookId.getText();
         category=bookCategory.getText();

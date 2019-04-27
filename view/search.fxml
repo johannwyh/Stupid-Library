@@ -72,56 +72,56 @@
             <Image url="@icon.png" />
          </image>
       </ImageView>
-      <Text fill="WHITE" layoutX="85.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ID">
+      <Text fill="WHITE" layoutX="249.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book ID">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="78.0" layoutY="444.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category">
+      <Text fill="WHITE" layoutX="243.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="96.0" layoutY="491.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+      <Text fill="WHITE" layoutX="261.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="105.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press">
+      <Text fill="WHITE" layoutX="266.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Press">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="109.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year">
+      <Text fill="WHITE" layoutX="270.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Year">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="90.0" layoutY="630.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author">
+      <Text fill="WHITE" layoutX="256.0" layoutY="626.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="107.0" layoutY="677.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+      <Text fill="WHITE" layoutX="267.0" layoutY="676.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="bookId" layoutX="192.0" layoutY="368.0" />
-      <TextField fx:id="bookCategory" layoutX="192.0" layoutY="415.0" />
-      <TextField fx:id="bookName" layoutX="192.0" layoutY="462.0" />
-      <TextField fx:id="bookPress" layoutX="192.0" layoutY="509.0" />
-      <TextField fx:id="bookYearLB" layoutX="192.0" layoutY="556.0" prefHeight="37.0" prefWidth="69.0" />
-      <TextField fx:id="bookAuthor" layoutX="192.0" layoutY="603.0" />
-      <TextField fx:id="bookPriceLB" layoutX="192.0" layoutY="650.0" prefHeight="37.0" prefWidth="67.0" />
-      <Button layoutX="165.0" layoutY="713.0" mnemonicParsing="false" onAction="#getSearchResult" prefHeight="33.0" prefWidth="260.0" text="Search">
+      <TextField fx:id="bookId" layoutX="385.0" layoutY="352.0" />
+      <TextField fx:id="bookCategory" layoutX="385.0" layoutY="400.0" />
+      <TextField fx:id="bookName" layoutX="385.0" layoutY="448.0" />
+      <TextField fx:id="bookPress" layoutX="385.0" layoutY="497.0" />
+      <TextField fx:id="bookYearLB" layoutX="391.0" layoutY="548.0" prefHeight="37.0" prefWidth="69.0" />
+      <TextField fx:id="bookAuthor" layoutX="385.0" layoutY="599.0" />
+      <TextField fx:id="bookPriceLB" layoutX="392.0" layoutY="649.0" prefHeight="37.0" prefWidth="67.0" />
+      <Button layoutX="350.0" layoutY="719.0" mnemonicParsing="false" onAction="#getSearchResult" prefHeight="33.0" prefWidth="260.0" text="Search">
          <font>
             <Font size="55.0" />
          </font>
       </Button>
-      <Text fill="WHITE" layoutX="283.0" layoutY="579.0" strokeType="OUTSIDE" strokeWidth="0.0" text="——" />
-      <Text fill="WHITE" layoutX="283.0" layoutY="673.0" strokeType="OUTSIDE" strokeWidth="0.0" text="——" />
-      <TextField fx:id="bookYearUB" layoutX="329.0" layoutY="556.0" prefHeight="37.0" prefWidth="69.0" />
-      <TextField fx:id="bookPriceUB" layoutX="329.0" layoutY="650.0" prefHeight="37.0" prefWidth="69.0" />
+      <Text fill="WHITE" layoutX="475.0" layoutY="571.0" strokeType="OUTSIDE" strokeWidth="0.0" text="——" />
+      <Text fill="WHITE" layoutX="475.0" layoutY="672.0" strokeType="OUTSIDE" strokeWidth="0.0" text="——" />
+      <TextField fx:id="bookYearUB" layoutX="522.0" layoutY="548.0" prefHeight="37.0" prefWidth="69.0" />
+      <TextField fx:id="bookPriceUB" layoutX="522.0" layoutY="649.0" prefHeight="37.0" prefWidth="69.0" />
    </children>
 </AnchorPane>

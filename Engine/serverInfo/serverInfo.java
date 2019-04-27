@@ -9,7 +9,7 @@ public class serverInfo
 {
     public static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";  
    // public static final String DB_URL = "jdbc:mysql://localhost:3306/StupidLibrary";
-    public static  final String DB_URL="jdbc:mysql://localhost";///StupidLibrary";
+    public static  final String DB_URL="jdbc:mysql://localhost/StupidLibrary";///StupidLibrary";
     public static  String USER = "root";
     public static  String PASS = "johann990409wang";
     private static String dbUseUnicode = "TRUE";

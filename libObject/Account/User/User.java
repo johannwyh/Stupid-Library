@@ -8,9 +8,13 @@ public class User extends Account       //user object
         this.department=depart;
         this.userType=type;
     }
-    public User(String id,String name,String tel,String depart,String type)
+    public User(String id,String pwd,String name,String depart,String type)
     {
-        super(id,"996ICU",name,tel);
+        super(id);
+        this.setName(name);
+        this.setPassword(pwd);
+        this.department=depart;
+        this.userType=type;
         this.department=depart;
         this.userType=type;
     }

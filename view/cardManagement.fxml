@@ -78,20 +78,44 @@
          </font>
       </Text>
       <TextField fx:id="cardId" layoutX="309.0" layoutY="367.0" />
-      <Button layoutX="648.0" layoutY="365.0" mnemonicParsing="false" onAction="#showCardInfo" prefHeight="43.0" prefWidth="150.0" text="Card Info">
+      <Button layoutX="600.0" layoutY="364.0" mnemonicParsing="false" onAction="#showCardInfo" prefHeight="43.0" prefWidth="150.0" text="Card Info">
          <font>
             <Font size="55.0" />
          </font>
       </Button>
-      <Button layoutX="223.0" layoutY="454.0" mnemonicParsing="false" onAction="#insertUser" prefHeight="43.0" prefWidth="173.0" text="Insert User">
+      <Button layoutX="214.0" layoutY="624.0" mnemonicParsing="false" onAction="#insertUser" prefHeight="43.0" prefWidth="173.0" text="Insert User">
          <font>
             <Font size="55.0" />
          </font>
       </Button>
-      <Button layoutX="480.0" layoutY="454.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="43.0" prefWidth="173.0" text="Delete User">
+      <Button layoutX="429.0" layoutY="624.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="43.0" prefWidth="173.0" text="Delete User">
          <font>
             <Font size="55.0" />
          </font>
       </Button>
+      <Text fill="WHITE" layoutX="163.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pass Word">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="Passwd" layoutX="309.0" layoutY="418.0" />
+      <TextField fx:id="Name" layoutX="309.0" layoutY="466.0" />
+      <Text fill="WHITE" layoutX="190.0" layoutY="493.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="154.0" layoutY="541.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="Department" layoutX="309.0" layoutY="514.0" />
+      <Text fill="WHITE" layoutX="196.0" layoutY="588.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="Type" layoutX="309.0" layoutY="561.0" />
    </children>
 </AnchorPane>

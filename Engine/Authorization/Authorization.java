@@ -27,8 +27,7 @@ public class Authorization
     {
         serverInfo.init("./data/admin.txt");
         dragFromBackend();
-        printAccount();
-        importFromList("./data/userList.txt");
+        importFromList("./data/userList.txt");   
         printAccount();
     }
 
@@ -41,7 +40,7 @@ public class Authorization
                 Connection conn = null;
                 Class.forName(serverInfo.JDBC_DRIVER);
                 conn = DriverManager.getConnection(serverInfo.getUrl());
-                String sql = "insert into user (cardID, name, dept, type) values(?, ?, ?, ?)";
+                String sql = "insert into user (cardID, name, dept, type, passwd) values(?, ?, ?, ?, ?)";
                 PreparedStatement pstmt;
                 System.out.println("##### Inserting User " + t.getId());
                 pstmt = (PreparedStatement)conn.prepareStatement(sql);
@@ -49,6 +48,7 @@ public class Authorization
                 pstmt.setString(2, t.getName());
                 pstmt.setString(3, t.getDepartment());
                 pstmt.setString(4, t.getType());
+                pstmt.setString(5, t.getPass());
                 pstmt.executeUpdate();
                 pstmt.close();
                 conn.close();
@@ -185,8 +185,10 @@ public class Authorization
                 String name = rs.getString("name");
                 String dept = rs.getString("dept");
                 String type = rs.getString("type");
+                String passwd = rs.getString("passwd");
                 if (existID(cardID) == true) continue;
-                User tmp = new User(cardID, name, dept, type);
+                //public User(String id,String pwd,String name,String depart,String type)
+                User tmp = new User(cardID, passwd, name, dept, type);
                 account.add(tmp);
             }
             stmt.close();
