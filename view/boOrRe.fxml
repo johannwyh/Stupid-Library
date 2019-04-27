@@ -109,18 +109,29 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="borrowDate" layoutX="330.0" layoutY="482.0" />
       <Text fill="WHITE" layoutX="57.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Due Date">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="dueDate" layoutX="189.0" layoutY="583.0" />
       <Text fill="WHITE" layoutX="495.0" layoutY="609.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return Date">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <TextField fx:id="returnDate" layoutX="658.0" layoutY="583.0" />
+      <TextField fx:id="borrowDateY" layoutX="330.0" layoutY="482.0" prefHeight="37.0" prefWidth="67.0" />
+      <TextField fx:id="borrowDateM" layoutX="410.0" layoutY="482.0" prefHeight="37.0" prefWidth="67.0" />
+      <TextField fx:id="borrowDateD" layoutX="488.0" layoutY="482.0" prefHeight="37.0" prefWidth="67.0" />
+      <TextField fx:id="dueDateY" layoutX="176.0" layoutY="582.0" prefHeight="37.0" prefWidth="67.0" />
+      <TextField fx:id="dueDateM" layoutX="252.0" layoutY="582.0" prefHeight="37.0" prefWidth="67.0" />
+      <TextField fx:id="dueDateD" layoutX="328.0" layoutY="582.0" prefHeight="37.0" prefWidth="67.0" />
+      <TextField fx:id="returnDateY" layoutX="639.0" layoutY="582.0" prefHeight="37.0" prefWidth="67.0" />
+      <TextField fx:id="returnDateM" layoutX="715.0" layoutY="582.0" prefHeight="37.0" prefWidth="67.0" />
+      <TextField fx:id="returnDateD" layoutX="792.0" layoutY="582.0" prefHeight="37.0" prefWidth="67.0" />
+      <Text fill="#0bee62" layoutX="262.0" layoutY="763.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note that date should be in format : yyyy/mm/dd ">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

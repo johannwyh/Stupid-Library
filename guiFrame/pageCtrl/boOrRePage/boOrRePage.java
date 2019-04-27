@@ -35,11 +35,23 @@ public class boOrRePage extends pageCtrl
     @FXML
     private TextField bookId;
     @FXML
-    private TextField borrowDate;
+    private TextField borrowDateY;
     @FXML
-    private TextField dueDate;
+    private TextField borrowDateM;
     @FXML
-    private TextField returnDate;
+    private TextField borrowDateD;
+    @FXML
+    private TextField dueDateY;
+    @FXML
+    private TextField dueDateM;
+    @FXML
+    private TextField dueDateD;
+    @FXML
+    private TextField returnDateY;
+    @FXML
+    private TextField returnDateM;
+    @FXML
+    private TextField returnDateD;
 
     private TableColumn cidCol = new TableColumn("cardId");
     private TableColumn bidCol = new TableColumn("bookId");
@@ -102,7 +114,7 @@ public class boOrRePage extends pageCtrl
         {
             data.add(new libRecord(k.getCardId(),k.getBookId(),k.getDateB(),k.getDateD(),k.getDateR(),k.getSupervisor()));
         }
-        
+
         label.setText("Record Of Card : "+id);
         table.setItems(data);
         pane.show();
@@ -115,8 +127,8 @@ public class boOrRePage extends pageCtrl
     {
         String Bid=bookId.getText();
         String Cid=cardId.getText();
-        String bDate=borrowDate.getText();
-        String dDate=dueDate.getText();
+        String bDate=borrowDateY.getText()+"/"+borrowDateM.getText()+"/"+borrowDateD.getText();
+        String dDate=dueDateY.getText()+"/"+dueDateM.getText()+"/"+dueDateD.getText();
         String message="User with ID "+Cid+" want to borrow book with ID "+Bid+"\n"+
                     "borrowDate="+bDate+"\n"+"dueDate="+dDate;
         //System.out.println("User with ID "+Cid+" want to borrow book with ID "+Bid);
@@ -138,7 +150,7 @@ public class boOrRePage extends pageCtrl
     {
         String Bid=bookId.getText();
         String Cid=cardId.getText();
-        String rDate=returnDate.getText();
+        String rDate=returnDateY.getText()+"/"+returnDateM.getText()+"/"+returnDateD.getText();
 
         String message="User with ID "+Cid+" want to return book with ID "+Bid+"\n"+
                     "returnDate="+rDate;
