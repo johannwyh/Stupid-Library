@@ -49,7 +49,7 @@ public class boOrRePage extends pageCtrl
     private TableColumn spCol = new TableColumn("supervisior");
     private Stage pane = new Stage();
     private Label label= new Label();
-    private TableView table = new TableView();
+    private TableView<libRecord> table = new TableView<libRecord>();
 
     @Override
     public void initialize(URL location, ResourceBundle resources)
@@ -96,12 +96,13 @@ public class boOrRePage extends pageCtrl
     {
         String id = cardId.getText();
         ArrayList<Entry> result = userManagement.getUserRecord(id);
-        ArrayList<libRecord> temp = new ArrayList<libRecord>();
+
+        ObservableList<libRecord> data = FXCollections.observableArrayList();
         for(Entry k : result)
         {
-            temp.add(new libRecord(k.getCardId(),k.getBookId(),k.getDateB(),k.getDateD(),k.getDateR(),k.getSupervisor()));
+            data.add(new libRecord(k.getCardId(),k.getBookId(),k.getDateB(),k.getDateD(),k.getDateR(),k.getSupervisor()));
         }
-        ObservableList<libRecord> data = FXCollections.observableArrayList(temp);
+        
         label.setText("Record Of Card : "+id);
         table.setItems(data);
         pane.show();
