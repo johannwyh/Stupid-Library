@@ -3,6 +3,10 @@ import java.io.File;
 import java.util.ArrayList;
 
 import guiFrame.pageCtrl.pageCtrl;
+import guiFrame.tablePage.bookListPage.bookListPage;
+import guiFrame.tableType.bookList.bookList;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
@@ -80,6 +84,17 @@ public class searchPage extends pageCtrl
         
         ArrayList<Book> sR = new ArrayList<Book>();
         sR = bookManagement.searchBook(id, category, name, press, yearLB, yearUB, author, priceLB, priceUB);
+        ObservableList<bookList> data = FXCollections.observableArrayList();
+        for(Book k : sR)
+        {
+            data.add(
+                new bookList
+                (
+                    k.getId(), k.getType(), k.getTitle(), k.getPress(), 
+                    k.getAuthor(), k.getYear(),k.getNum(), k.getStock(), k.getPrice())
+                );
+        }
+        bookListPage.show(data);
         return;
     }
 

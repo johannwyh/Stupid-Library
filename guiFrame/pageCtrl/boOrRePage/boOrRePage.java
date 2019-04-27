@@ -1,5 +1,6 @@
 package guiFrame.pageCtrl.boOrRePage;
 import java.net.URL;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -7,6 +8,7 @@ import java.util.ResourceBundle;
 import Engine.basicOperation.basicOperation;
 import guiFrame.controlManager.controlManager;
 import guiFrame.pageCtrl.pageCtrl;
+import guiFrame.tablePage.recordPage.recordPage;
 import guiFrame.tableType.libRecord.libRecord;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +26,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import libObject.Book.Book;
 import libObject.Entry.Entry;
 import Engine.bookManagement.bookManagement;
 import Engine.userManagement.userManagement;
@@ -63,65 +66,35 @@ public class boOrRePage extends pageCtrl
     private Label label= new Label();
     private TableView<libRecord> table = new TableView<libRecord>();
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources)
-    {
-       pane.setTitle("Record");
-       pane.setMinWidth(650);
-       pane.setMaxWidth(650);
-       pane.setMinHeight(650);
-       pane.setMaxHeight(650);
-
-       label.setFont(new Font("Arial",20));
-
-       table.setEditable(false);
-       table.getColumns().addAll(cidCol,bidCol,dbCol,ddCol,drCol,spCol);
-
-       cidCol.setMinWidth(100);
-       bidCol.setMinWidth(100);
-       dbCol.setMinWidth(100);
-       ddCol.setMinWidth(100);
-       drCol.setMinWidth(100);
-       spCol.setMinWidth(100);
-
-       cidCol.setCellValueFactory(new PropertyValueFactory<>("cardId"));
-       bidCol.setCellValueFactory(new PropertyValueFactory<>("bookId"));
-       dbCol.setCellValueFactory(new PropertyValueFactory<>("dateBorrow"));
-       ddCol.setCellValueFactory(new PropertyValueFactory<>("dateDue"));
-       drCol.setCellValueFactory(new PropertyValueFactory<>("dateReturn"));
-       spCol.setCellValueFactory(new PropertyValueFactory<>("supervisior"));
-
-       final VBox vbox = new VBox();
-       vbox.setSpacing(5);
-       vbox.setPadding(new Insets(10, 0, 0, 10));
-       vbox.getChildren().addAll(label, table);
-
-       Scene scene = new Scene(new Group());
-       ((Group) scene.getRoot()).getChildren().addAll(vbox);
-
-       pane.setScene(scene);
-    }
-
-    
-
     public void showCardInfo()
     {
         String id = cardId.getText();
         ArrayList<Entry> result = userManagement.getUserRecord(id);
-
         ObservableList<libRecord> data = FXCollections.observableArrayList();
         for(Entry k : result)
         {
             data.add(new libRecord(k.getCardId(),k.getBookId(),k.getDateB(),k.getDateD(),k.getDateR(),k.getSupervisor()));
         }
-
-        label.setText("Record Of Card : "+id);
-        table.setItems(data);
-        pane.show();
+        recordPage.show(id,data);
     }
     public void showBookInfo()
     {
-        System.out.println("book ID : "+bookId.getText());
+        String id = bookId.getText();
+        Book result = bookManagement.getBookById(id);
+        Alert info = new Alert(Alert.AlertType.INFORMATION);
+        String message;
+        if(result==null)
+        {
+            message="No Such Book ! Check It Again!";
+        }
+        else
+        {
+            message=result.toString();
+        }
+        info.setTitle("Result");
+        info.setHeaderText("Information Of Book : "+id);
+        info.setContentText(message);
+        info.show();
     }
     public void toBorrow()
     {

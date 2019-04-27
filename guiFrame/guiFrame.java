@@ -16,6 +16,8 @@ import guiFrame.pageCtrl.importPage.importPage;
 import guiFrame.pageCtrl.searchPage.searchPage;
 import guiFrame.pageCtrl.boOrRePage.boOrRePage;
 import guiFrame.pageCtrl.userPage.userPage;
+import guiFrame.tablePage.bookListPage.bookListPage;
+import guiFrame.tablePage.recordPage.recordPage;
 import Engine.Authorization.Authorization;
 
 public class guiFrame extends Application
@@ -49,6 +51,8 @@ public class guiFrame extends Application
             searchPage.touch();
             boOrRePage.touch();
             userPage.touch();
+            recordPage.init();
+            bookListPage.init();
         }
         catch(Exception e)
         {

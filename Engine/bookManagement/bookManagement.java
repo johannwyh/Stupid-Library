@@ -198,4 +198,34 @@ public class bookManagement {
         }
         return null;
     } 
+    public static Book getBookById(String id)
+    {
+        Book temp=null;
+        try
+        {
+            Connection conn = basicOperation.getConnection();
+            String sql = "select * from Book where bookID = ?";
+            PreparedStatement pstmt = (PreparedStatement)conn.prepareStatement(sql);
+            ArrayList<String> args = new ArrayList<String>();
+            args.add(id);
+            ResultSet target=basicOperation.selectWithArgs(conn, pstmt, args);
+            if(target.next()) 
+            {
+                String bookID = target.getString("bookID");
+                String type = target.getString("type");
+                String title = target.getString("title");
+                String press = target.getString("press");
+                int year = target.getInt("year");
+                String author = target.getString("author");
+                float price = target.getFloat("price");
+                int num = target.getInt("num");
+                int stock = target.getInt("stock");
+                temp = new Book(bookID, type, title, press, year, author, price, num, stock);
+            }
+        }catch(Exception e)
+        {
+            e.printStackTrace();   
+        }
+        return temp;
+    }
 }
