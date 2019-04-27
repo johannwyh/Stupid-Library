@@ -4,6 +4,7 @@ import Engine.Authorization.Authorization;
 import libObject.Book.Book;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class bookManagement {
     public static void importBook(Book b) {
@@ -45,7 +46,7 @@ public class bookManagement {
         }
     }
 
-    public static boolean borrowBook(String bookID, String cardID, String borrowDate, String dueDate) {
+    public static String borrowBook(String bookID, String cardID, String borrowDate, String dueDate) {
         PreparedStatement pstmt;
         String sql;
         ResultSet rs;
@@ -57,16 +58,26 @@ public class bookManagement {
             pstmt.setString(2, bookID);
             rs = pstmt.executeQuery();
             if (rs.next() != false) {
-                return false;
+                return "cannot borrow more than one certain book";
             } else {
                 sql = "select * from Book where bookID = ?";
                 pstmt = (PreparedStatement)Authorization.currentConnection.prepareStatement(sql);
                 pstmt.setString(1, bookID);
                 rs = pstmt.executeQuery();
                 if (rs.next() == false) {
-                    return false;
+                    return "no such book";
                 } else if (rs.getInt("stock") == 0) {
-                    return false;
+                    sql = "select dueDate from entry where bookID = ? and returnDate is null";
+                    pstmt = (PreparedStatement)Authorization.currentConnection.prepareStatement(sql);
+                    pstmt.setString(1, bookID);
+                    rs = pstmt.executeQuery();
+                    ArrayList<String> dueDates = new ArrayList<String>();
+                    while (rs.next()) {
+                        String date = rs.getString("dueDate");
+                        dueDates.add(date);
+                    }
+                    Collections.sort(dueDates);
+                    return "no book left, the earlist due date is " + dueDates.get(0);
                 } else {
                     sql = "insert into entry (cardID, bookID, borrowDate, dueDate, returnDate, adminID) values(?, ?, ?, ?, ?, ?)";
                     pstmt = (PreparedStatement)Authorization.currentConnection.prepareStatement(sql);
@@ -83,7 +94,7 @@ public class bookManagement {
                     pstmt.setString(1, bookID);
                     pstmt.executeUpdate();
 
-                    return true;
+                    return "succeed";
                 }
             }
         } catch (SQLException se) {
@@ -91,7 +102,7 @@ public class bookManagement {
         } catch (Exception e) {
             e.printStackTrace();
         } 
-        return false;
+        return "error";
     }
     
     public static boolean returnBook(String bookID, String cardID, String returnDate) {
@@ -135,24 +146,56 @@ public class bookManagement {
     public static ArrayList<Book> searchBook(String bookID, String type, String name,
                                             String press, int minYear, int maxYear,
                                             String author, float minPrice, float maxPrice) {
-        String sql = "select * from where";
-        sql += " year >= " + Integer.toString(minYear);
-        sql += " and year <= " + Integer.toString(maxYear);
-        sql += " and price >= " + Float.toString(minPrice);
-        sql += " and price <= " + Float.toString(maxPrice);
+        String sql = "select * from Book where";
+        ArrayList<String> args = new ArrayList<String>(); 
+        sql += " year >= ?"; args.add(Integer.toString(minYear));
+        sql += " and year <= ?"; args.add(Integer.toString(maxYear));
+        sql += " and price >= ?"; args.add(Float.toString(minPrice));
+        sql += " and price <= ?"; args.add(Float.toString(maxPrice));
         if (bookID.equals("") == false) {
-            sql += " bookID = " + bookID;
+            sql += " and bookID = ?";
+            args.add(bookID);
         }
         if (type.equals("") == false) {
-            sql += " type = " + type;
+            sql += " and type = ?";
+            args.add(type);
         }
         if (name.equals("") == false) {
-            sql += " title = " + name;
+            sql += " and title = ?";
+            args.add(name);
         }
         if (press.equals("") == false) {
-            sql += " press = " + press;
+            sql += " and press = ?";
+            args.add(press);
         }
-        sql += "";
+        if (author.equals("") == false) {
+            sql += " and author = ?";
+            args.add(author);
+        }
+
+        try {
+            Connection conn = basicOperation.getConnection();
+            PreparedStatement pstmt = (PreparedStatement)Authorization.currentConnection.prepareStatement(sql);
+            ResultSet rs = basicOperation.selectWithArgs(conn, pstmt, args);
+            ArrayList<Book> ret = new ArrayList<Book>();
+            while (rs.next()) {
+                Book tmp = new Book(rs.getString("bookID"),
+                                    rs.getString("type"),
+                                    rs.getString("title"),
+                                    rs.getString("press"),
+                                    rs.getInt("year"),
+                                    rs.getString("author"),
+                                    rs.getFloat("price"),
+                                    rs.getInt("num"),
+                                    rs.getInt("stock"));
+                ret.add(tmp);
+            }
+            return ret;
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     } 
 }

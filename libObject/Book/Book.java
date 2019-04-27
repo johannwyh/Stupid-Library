@@ -4,6 +4,7 @@ public class Book
     private String bookId,bookType,bookTitle,bookPress,bookAuthor;
     private int bookYear,bookNum,bookStock;
     private float bookPrice;
+    public Book() {}
     public Book(String id,String type,String title,String press,int year,String author,float price,int num,int stock)
     {
         bookId=id;
