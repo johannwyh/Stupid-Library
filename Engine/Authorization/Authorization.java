@@ -229,7 +229,7 @@ public class Authorization
         }
         return false;
     }
-    
+
     public static void logIn(String id)
     {
         for(Account t:account)
@@ -241,7 +241,7 @@ public class Authorization
         }
 
     }
-    
+
     public static void logOut()
     {
         currentAccount=null;

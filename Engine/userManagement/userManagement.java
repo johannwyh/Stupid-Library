@@ -18,7 +18,28 @@ public class userManagement
     }
     public static boolean deleteUser(String id) 
     {
-        return Authorization.deleteAccount(Authorization.currentAccount, id);
+        try {
+            String sql = "select * from entry where cardID = ? and returnDate is null";
+            PreparedStatement pstmt = (PreparedStatement)Authorization.currentConnection.prepareStatement(sql);
+            pstmt.setString(1, id);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return false;
+            } else if (Authorization.deleteAccount(Authorization.currentAccount, id)) {
+                sql = "delete from entry where cardID = ?";
+                pstmt = (PreparedStatement)Authorization.currentConnection.prepareStatement(sql);
+                pstmt.setString(1, id);
+                pstmt.executeUpdate();
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
     public static User searchUser(String id)
     {
