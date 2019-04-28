@@ -105,9 +105,9 @@ public class boOrRePage extends pageCtrl
         while(bdM.length()<2)bdM="0"+bdM;
         while(bdD.length()<2)bdD="0"+bdD;
         String ddY=dueDateY.getText(),ddM=dueDateM.getText(),ddD=dueDateD.getText();
-        while(ddY.length()<2)ddY="0"+bdY;
-        while(ddM.length()<2)ddM="0"+bdM;
-        while(ddD.length()<2)ddD="0"+bdD;
+        while(ddY.length()<2)ddY="0"+ddY;
+        while(ddM.length()<2)ddM="0"+ddM;
+        while(ddD.length()<2)ddD="0"+ddD;
         String bDate=bdY+"/"+bdM+"/"+bdD;
         String dDate=ddY+"/"+ddM+"/"+ddD;
         String message="User with ID "+Cid+" want to borrow book with ID "+Bid+"\n"+
