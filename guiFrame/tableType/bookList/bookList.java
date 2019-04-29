@@ -1,5 +1,7 @@
 package guiFrame.tableType.bookList;
 
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class bookList
@@ -8,8 +10,10 @@ public class bookList
     //private int bookYear,bookNum,bookStock;
     //private float bookPrice;
     
-    private SimpleStringProperty bookId,bookType,bookTitle,
-    bookPress,bookAuthor,bookYear,bookNum,bookStock,bookPrice;
+    private SimpleStringProperty bookId,bookType,bookTitle,bookPress,bookAuthor;
+    private SimpleIntegerProperty bookYear,bookNum,bookStock;
+    private SimpleFloatProperty bookPrice;
+
     public bookList(String bookId,String bookType,String bookTitle,String bookPress,
     String bookAuthor,int bookYear,int bookNum,int bookStock,float bookPrice)
     {
@@ -18,10 +22,10 @@ public class bookList
         this.bookTitle=new SimpleStringProperty(bookTitle);
         this.bookPress=new SimpleStringProperty(bookPress);
         this.bookAuthor=new SimpleStringProperty(bookAuthor);
-        this.bookYear=new SimpleStringProperty(""+bookYear);
-        this.bookNum=new SimpleStringProperty(""+bookNum);
-        this.bookStock=new SimpleStringProperty(""+bookStock);
-        this.bookPrice=new SimpleStringProperty(""+bookPrice);
+        this.bookYear=new SimpleIntegerProperty(bookYear);
+        this.bookNum=new SimpleIntegerProperty(bookNum);
+        this.bookStock=new SimpleIntegerProperty(bookStock);
+        this.bookPrice=new SimpleFloatProperty(bookPrice);
     }
     public String getBookId()
     {
@@ -43,19 +47,19 @@ public class bookList
     {
         return bookAuthor.get();
     }
-    public String getBookYear()
+    public int getBookYear()
     {
         return bookYear.get();
     }
-    public String getBookNum()
+    public int getBookNum()
     {
         return bookNum.get();
     }
-    public String getBookPrice()
+    public float getBookPrice()
     {
         return bookPrice.get();
     }
-    public String getBookStock()
+    public int getBookStock()
     {
         return bookStock.get();
     }
