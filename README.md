@@ -1,11 +1,11 @@
 # Stupid-Libary
 The curriculum project of "Data Base System" :  *Mini-Library-System*
 
-###Developed By
+### Developed By
 - 漆翔宇  计算机科学与技术  3170104557
 - 王宇晗  混合班   3170106051
 
-###How To Run
+### How To Run
 - Java 8 SE is recommended.
 - compile
 ```shell
