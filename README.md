@@ -1,4 +1,4 @@
-# Stupid-Libary
+# Stupid-Library
 The curriculum project of "Data Base System" :  *Mini-Library-System*
 
 ### Developed By
